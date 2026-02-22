@@ -46,7 +46,7 @@ class NeuralNetwork:
         self.hidden_size = cli_args.hidden_size
         self.activation = ACTIVATIONS[cli_args.activation]()
         self.weight_init = cli_args.weight_init
-        self.optim = OPTIMIZERS[cli_args.optimizer]()
+        self.optim = OPTIMIZERS[cli_args.optimizer](self.lr)
 
         # Creating the Neural Network
         self.layers = []

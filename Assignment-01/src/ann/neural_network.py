@@ -40,7 +40,6 @@ class NeuralNetwork:
 
         # Reading the CLI arguments
         self.loss_fn = LOSS_FUNCTIONS[cli_args.loss]()
-        self.optimizer = cli_args.optimizer
         self.lr = cli_args.learning_rate
         self.weight_decay = cli_args.weight_decay
         self.num_layers = cli_args.num_layers

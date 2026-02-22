@@ -1,6 +1,7 @@
 import numpy as np
 from activations import ReLU, Sigmoid, Tanh, Softmax
 from neural_layer import NeuralLayer
+from optimizers import SGD, Momentum, NAG, RMSprop, Adam, NAdam
 from objective_functions import MSE, CrossEntropy
 
 ACTIVATIONS = {
@@ -8,6 +9,15 @@ ACTIVATIONS = {
     'sigmoid': Sigmoid,
     'tanh': Tanh,
     'softmax': Softmax
+}
+
+OPTIMIZERS = {
+    'sgd': SGD,
+    'momentum': Momentum,
+    'nag': NAG,
+    'rmsprop': RMSprop,
+    'adam': Adam,
+    'nadam': NAdam
 }
 
 LOSS_FUNCTIONS = {
@@ -37,7 +47,7 @@ class NeuralNetwork:
         self.hidden_size = cli_args.hidden_size
         self.activation = ACTIVATIONS[cli_args.activation]()
         self.weight_init = cli_args.weight_init
-        # self.optim     (Yet to be implemented)
+        self.optim = OPTIMIZERS[cli_args.optimizer]()
 
         # Creating the Neural Network
         self.layers = []
